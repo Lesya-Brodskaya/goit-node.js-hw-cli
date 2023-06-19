@@ -19,7 +19,7 @@ async function addContact(data) {
   const contacts = await listContacts();
   const newContact = { id: nanoid(), ...data };
   contacts.push(newContact);
-  await fs.wreitFile(contactsPath, JSON.stringify(contacts, null, 2));
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
   return newContact || null;
 }
 
@@ -30,7 +30,7 @@ async function removeContact(contactId) {
     return null;
   }
   const [result] = contacts.splice(index, 1);
-  await fs.wreitFile(contactsPath, JSON.stringify(contacts, null, 2));
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
   return result;
 }
 
